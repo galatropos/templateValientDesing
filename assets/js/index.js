@@ -37,3 +37,9 @@ QuerySubmitOpen.forEach((submit) =>
 QuerySubmitClose.forEach((submit) =>
   submit.addEventListener("click", closeSubmit)
 );
+
+window.addEventListener("load", () => {
+  document.getElementById("loader").style.display = "none";
+  document.body.classList.remove("loading");
+  document.getElementById("loader").remove("loading");
+});

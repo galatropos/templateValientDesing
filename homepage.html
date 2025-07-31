@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome</title>
+  <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  
+  <!-- START OF THE STYLESHEET -->
+  
+<style>
+:root {
+  color-scheme: only light;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  overflow: hidden;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background-color: white;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.container {
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  width: 100vw;
+  height: auto;
+  transform-origin: center center;
+  background-color: white;
+}
+.submit {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.submit-content {
+  margin: 0 auto;
+  padding: 5px 20px;
+  border: 1px solid #888;
+  width: 100%;
+  max-width: 100%;
+  text-align: center;
+  font-size: 20px;
+  z-index: 999999;
+}
+.submit-content img {
+  width: 70px;
+  height: 70px;
+}
+.thin-text {
+  font: message-box;
+  font-size: 20px;
+  margin: 0 auto;
+}
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+
+.loader-logo{
+  position: static;
+}
+
+.loader-progress {
+  height: 4px;
+  width: 130px;
+  --c:no-repeat linear-gradient(#ffa273 0 0);
+  background: var(--c),var(--c),#ffa27350 0 0;
+  background-size: 60% 100%;
+  animation: l16 3s infinite;
+}
+
+
+@keyframes l16 {
+  0%   {background-position:-150% 0,-150% 0}
+  66%  {background-position: 250% 0,-150% 0}
+  100% {background-position: 250% 0, 250% 0}
+}
+
+
+/* LANDSCAPE ------------------------------------------ */
+
+@media (orientation: landscape) {
+  .container {
+    flex-direction: row;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  html,
+  body,
+  .container {
+    background-color: white;
+    color: black;
+  }
+}
+
+
+body {
+  margin: 0;
+  background: #f0f8ff;
+  overflow: hidden;
+}
+
+canvas {
+  display: block;
+  background: #fff;
+  background-color: aqua;
+}
+</style>
+</head>
+
+<body  class="loading">
+
+  <div id="loader" class="">
+
+  <svg class=" loader-logo" xmlns="http://www.w3.org/2000/svg" width="10em" height="10em" fill="currentColor"
+  viewBox="0 0 204 60" class="brandLogo_brand_logo_size__small__8Y6ci brandLogo_brand_logo_type__black__2zLU5"
+  role="presentation" data-testid="brand-logo">
+  <path fill="current"
+    d="M21.522 50.061c3.49-1.114 6.98-2.362 10.47-3.722 9.923-4.067 14.506-11.788 14.506-22.574 0-12.078-8.143-23.087-22.545-23.087C8.77.678.5 12.333.5 24.979c0 12.435 8.713 22.363 22.173 22.363L10.04 51.7l1.164 1.928a17.8 17.8 0 0 1 6.386-1.427c6.69 0 11.727 7.8 19.696 7.8 5.49 0 8.143-3.644 9.4-7.644-1.652 1.65-4.433 2.362-7.295 2.362-6.968-.01-11.936-4.445-17.868-4.657M8.968 24.188C7.992 12.968 13.355 2.572 21.44 2.572c10.005 0 15.635 10.54 16.613 21.761.453 8.502-2.246 21.483-12.553 21.483-10.714 0-16.077-13.193-16.53-21.628M82.004 13.97l-8.05 3.856c1.884 2.229 2.256 5.293 2.256 7.722v11.655c-3.083 4.211-6.456 7.42-10.668 7.42-7.445 0-7.073-6.495-7.073-13.783V14.26l-8.038 3.856c1.884 2.228 2.256 5.292 2.256 7.721v6.786c0 7.722.454 14.864 9.842 14.864 5.887 0 10.203-3.12 13.681-7.8V47.9l8.05-3.71c-1.884-2.229-2.257-5.293-2.257-7.722zM93.217 7.653a3.9 3.9 0 0 0 1.565-.241 3.8 3.8 0 0 0 1.326-.833c.376-.364.667-.8.854-1.28.188-.479.267-.99.234-1.501a3.44 3.44 0 0 0-.237-1.492 3.6 3.6 0 0 0-.858-1.265 3.8 3.8 0 0 0-1.326-.814A3.9 3.9 0 0 0 93.217.01a3.95 3.95 0 0 0-1.573.212 3.8 3.8 0 0 0-1.345.81c-.383.357-.684.789-.88 1.266a3.5 3.5 0 0 0-.262 1.5c-.025.516.063 1.031.258 1.512.196.481.495.917.877 1.28.383.364.841.646 1.345.83a4 4 0 0 0 1.58.234M96.673 13.97l-8.143 3.856c1.885 2.229 2.257 5.148 2.257 7.722v13.86c0 2.575-.373 5.505-2.257 7.722h10.377c-1.885-2.228-2.257-5.147-2.257-7.721zM134.75 29.403c0-7.644-.152-15.6-9.842-15.6-5.515 0-8.958 1.761-13.681 8.146v-7.934l-8.143 3.856c1.884 2.228 2.256 5.147 2.256 7.721V39.41c0 2.574-.372 5.504-2.256 7.721h10.377c-1.885-2.228-2.257-5.147-2.257-7.721V24.556c4.327-6.552 7.689-8.011 10.528-8.011 7.666 0 7.131 7.142 7.131 14.217v8.647c0 2.574-.372 5.504-2.245 7.721h10.365c-1.873-2.228-2.257-5.147-2.257-7.721zM189.286 13.692c-9.621 0-16.915 6.686-16.915 16.926 0 9.649 6.538 16.87 16.543 16.87 6.2 0 10.947-2.775 14.111-8.77l.198-.3-.512-.435s-2.676 4.3-6.398 5.905a12.8 12.8 0 0 1-4.177.669c-9.12 0-12.727-7.8-13.25-14.14h24.604v-.724c.256-9.36-4.63-16-14.204-16m-10.47 12.424c.756-6.574 4.293-10.585 9.4-10.585a9.1 9.1 0 0 1 3.416.64 8.8 8.8 0 0 1 2.883 1.869 8.3 8.3 0 0 1 1.893 2.798 8.05 8.05 0 0 1 .603 3.284c0 4.456-3.386 4.456-7.597 4.568l-10.668.145c-.023-.925-.023-1.861.07-2.719M169.801 39.62a9.9 9.9 0 0 1-3.608 3.625 10.5 10.5 0 0 1-5.013 1.423h-1.023c-9.365-.09-14.193-8.535-14.193-16.569 0-7.142 3.757-12.657 10.598-12.657 4.653 0 8.143 2.094 9.469 9.437h.733l2.653-7.432c-3.386-2.852-7.899-3.777-11.959-3.777-12.099 0-17.741 8.357-17.741 16.647 0 8.646 6.096 17.148 17.368 17.148 1.888.08 3.772-.201 5.546-.825a14.4 14.4 0 0 0 4.785-2.808q.482-.38.861-.858l.093-.122a15.2 15.2 0 0 0 1.942-2.82z">
+  </path>
+</svg>
+ <div class="loader-progress">
+
+
+ </div> 
+
+</div>
+
+
+  <div class="submit">
+    <div class="submit-content" style="background-color: #1184ab; color: white">
+      <span class="close submit-close">&times;</span>
+      <div class="submit-body" style="display: flex; align-items: center">
+        <img src="https://playable.applovindemo.com/Preview/assets/platforms/ClickModal_AL.PNG" alt="Imagen de compra"
+          class="submit-image" />
+        <h2 class="thin-text">You have successfully clicked</h2>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+
+    <canvas id="canvas"></canvas>
+  </div>
+  
+  
+  
+  
+  
+  
+
+  <!-- START OF THE JAVASCRIPT -->
+<script>
+// Archivo generado automáticamente con imágenes en base64 *No modificar* 
+
+
+
+const QuerySubmit = document.querySelector(".submit");
+const QuerySubmitOpen = document.querySelectorAll(".submit-open");
+const QuerySubmitClose = document.querySelectorAll(".submit-close");
+
+const openSubmit = () => {
+  QuerySubmit.style.display = "block";
+  setTimeout(closeSubmit, 5000);
+};
+
+const closeSubmit = () => (QuerySubmit.style.display = "none");
+
+const scaleContainer = () => {
+  const container = document.querySelector(".container");
+  let base1 = innerWidth <= innerHeight ? 900 : 1600;
+  let base2 = innerWidth <= innerHeight ? 1600 : 900;
+  let scale = Math.min(innerWidth / base1, innerHeight / base2);
+
+  container.setAttribute(
+    "style",
+    `
+    width: ${base1}px;
+    height: ${base2}px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(${scale});
+  `
+  );
+};
+
+addEventListener("load", scaleContainer);
+addEventListener("resize", scaleContainer);
+
+QuerySubmitOpen.forEach((submit) =>
+  submit.addEventListener("click", openSubmit)
+);
+QuerySubmitClose.forEach((submit) =>
+  submit.addEventListener("click", closeSubmit)
+);
+
+window.addEventListener("load", () => {
+  document.getElementById("loader").style.display = "none";
+  document.body.classList.remove("loading");
+  document.getElementById("loader").remove("loading");
+});
+
+
+const getBall=({x,y,w=ballWidth,h=ballHeight,color,id})=>({
+    x,
+    y,
+    w,
+    h,
+    color,
+    id,
+
+    draw(){
+        ctx.fillStyle=this.color;
+        ctx.fillRect(this.x,this.y,this.w,this.h);
+    }
+})
+
+
+
+const getTriangle = ({ x, y, w = 100, h = 100, color }) => {
+    const p1 = { x: x + w / 2, y };           // Vértice superior
+    const p2 = { x: x + w, y: y + h };        // Inferior derecho
+    const p3 = { x: x, y: y + h };            // Inferior izquierdo
+  
+    return {
+      x, y, w, h, color,
+      points: [p1, p2, p3],
+  
+      draw() {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.moveTo(p1.x, p1.y);
+        ctx.lineTo(p2.x, p2.y);
+        ctx.lineTo(p3.x, p3.y);
+        ctx.closePath();
+        ctx.fill();
+        ctx.strokeStyle = "black";
+        ctx.stroke();
+      },
+  
+
+    };
+  };
+
+
+
+function limit(ball, canvas) {
+  const move = {
+    left: true,
+    right: true,
+    bottom: true,
+  };
+
+  if (ball.x <= 0) {
+    move.left = false;
+  }
+
+  if (ball.x + ball.w >= canvas.width) {
+    // ← aquí estaba el problema
+    move.right = false;
+  }
+
+  if (ball.y + ball.h >= canvas.height) {
+    move.bottom = false;
+    move.left = false;
+    move.right = false;
+  }
+
+  return move;
+}
+
+function neighbor(ball, balls, baseMove) {
+  const move = { ...baseMove }; // Copia segura
+  const ballsNeighbors = balls.filter(
+    (other) => !(other.x === ball.x && other.y === ball.y)
+  );
+
+  const bottom = ballsNeighbors.filter(
+    (other) =>
+      ball.y + ball.h === other.y && // justo debajo
+      other.x < ball.x + ball.w && // solapa horizontalmente
+      other.x + other.w > ball.x
+  );
+
+  const left = ballsNeighbors.filter(
+    (other) =>
+      ball.x === other.x + other.w && // justo pegado a la izquierda
+      other.y < ball.y + ball.h && // solapa verticalmente
+      other.y + other.h > ball.y
+  );
+  const right = ballsNeighbors.filter(
+    (other) =>
+      ball.x + ball.w === other.x && // justo pegado a la derecha
+      other.y < ball.y + ball.h && // solapa verticalmente
+      other.y + other.h > ball.y
+  );
+
+  if (bottom.length) {
+    move.bottom = false;
+  }
+  if (left.length) move.left = false;
+  if (right.length) move.right = false;
+
+  /// hace un simulacion que se mueve de izquierda y derecha
+
+  if (!right.length && !left.length && bottom.length) {
+    const [other] = bottom;
+    if (other.x === ball.x) {
+      const isLeft = Math.random() < 0.5;
+      move.left = isLeft;
+      move.right = !isLeft;
+    } else if (other.x > ball.x) {
+      move.left = true;
+      move.right = false;
+    } else {
+      move.left = false;
+      move.right = true;
+    }
+  }
+
+  /// no deja pasar el limite de derecha e izquierda
+
+  if (baseMove.left === false) move.left = false;
+  if (baseMove.right === false) move.right = false;
+
+  return move;
+}
+
+function detectBallTriangleContact(ball, triangle,move) {
+
+    // Puntos de las esquinas del cuadrado
+    const edges = [
+      { x: ball.x, y: ball.y }, // top-left
+      { x: ball.x + ball.w, y: ball.y }, // top-right
+      { x: ball.x, y: ball.y + ball.h }, // bottom-left
+      { x: ball.x + ball.w, y: ball.y + ball.h }, // bottom-right
+    ];
+  
+    // Bordes del cuadrado (líneas)
+    const squareEdges = [
+      [{ x: ball.x, y: ball.y }, { x: ball.x + ball.w, y: ball.y }],             // Top
+      [{ x: ball.x + ball.w, y: ball.y }, { x: ball.x + ball.w, y: ball.y + ball.h }], // Right
+      [{ x: ball.x + ball.w, y: ball.y + ball.h }, { x: ball.x, y: ball.y + ball.h }], // Bottom
+      [{ x: ball.x, y: ball.y + ball.h }, { x: ball.x, y: ball.y }],             // Left
+    ];
+  
+    // Función: intersección entre 2 líneas
+    function doLinesIntersect(p1, p2, p3, p4) {
+      const d = (p4.y - p3.y) * (p2.x - p1.x) - (p4.x - p3.x) * (p2.y - p1.y);
+      if (d === 0) return false; // Paralelas
+      const uA = ((p4.x - p3.x) * (p1.y - p3.y) - (p4.y - p3.y) * (p1.x - p3.x)) / d;
+      const uB = ((p2.x - p1.x) * (p1.y - p3.y) - (p2.y - p1.y) * (p1.x - p3.x)) / d;
+      return uA >= 0 && uA <= 1 && uB >= 0 && uB <= 1;
+    }
+  
+    // Función: punto dentro de triángulo
+    function pointInTriangle(px, py, a, b, c) {
+      const area = (a.x - c.x) * (b.y - c.y) - (a.y - c.y) * (b.x - c.x);
+      const s = ((a.y - c.y) * (px - c.x) + (c.x - a.x) * (py - c.y)) / area;
+      const t = ((c.y - b.y) * (px - c.x) + (b.x - c.x) * (py - c.y)) / area;
+      const u = 1 - s - t;
+      return s >= 0 && t >= 0 && u >= 0;
+    }
+  
+    const names = ["right", "left", "bottom"];
+    for (let i = 0; i < 3; i++) {
+      const t1 = triangle.points[i];
+      const t2 = triangle.points[(i + 1) % 3];
+      const name = names[i]; // right, left, bottom
+  
+      for (const [a, b] of squareEdges) {
+        if (doLinesIntersect(t1, t2, a, b)) {
+          move[name] = false;
+          break;
+        }
+      }
+    }
+  
+    // Si cualquier esquina está dentro del triángulo, bloquea todo
+    for (const p of edges) {
+      if (pointInTriangle(p.x, p.y, triangle.points[0], triangle.points[1], triangle.points[2])) {
+        move.left = move.right = move.bottom = move.top = false;
+        break;
+      }
+    }
+  
+    return move;
+  }
+  
+
+  // Detecta de qué lado toca
+  function getCollisionSide(ball, object, move) {
+    const baseMove = { ...move };
+  console.log({ball,object})
+
+  const ax=object.x
+  const ay=object.y
+  const bx=ball.x
+  const by=ball.y
+
+    // Primero, detección de colisión tipo AABB (rectángulo con rectángulo)
+ 
+    return baseMove;
+  }
+
+
+  function moveObjectRect(ball, object, baseMove) {
+    const move = { ...baseMove }; // Copia segura
+  
+    // margen de tolerancia
+    const tolerance = 0;
+  
+    // TOQUE ABAJO
+    if (
+      Math.abs((ball.y + ball.h) - object.y) <= tolerance &&
+      object.x < ball.x + ball.w &&
+      object.x + object.w > ball.x
+    ) {
+      move.bottom = false;
+    }
+  
+    // TOQUE IZQUIERDA
+    if (
+      Math.abs(ball.x - (object.x + object.w)) <= tolerance &&
+      object.y < ball.y + ball.h &&
+      object.y + object.h > ball.y
+    ) {
+      move.left = false;
+    }
+  
+    // TOQUE DERECHA
+    if (
+      Math.abs((ball.x + ball.w) - object.x) <= tolerance &&
+      object.y < ball.y + ball.h &&
+      object.y + object.h > ball.y
+    ) {
+      move.right = false;
+    }
+  
+    // TOQUE ARRIBA (opcional si necesitas detectar de arriba)
+    if (
+      Math.abs(ball.y - (object.y + object.h)) <= tolerance &&
+      object.x < ball.x + ball.w &&
+      object.x + object.w > ball.x
+    ) {
+      move.top = false;
+    }
+  
+    return move;
+  }
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+
+
+const canvas = document.getElementById("canvas");
+canvas.width = 900;
+canvas.height = 1400;
+const ctx = canvas.getContext("2d");
+const ballWidth=50;
+const ballHeight=50;
+velocity=2
+let gravity=2
+const noCards=5
+
+
+
+
+const animar=()=>{
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+triangle.draw();
+wood.forEach(wood=> wood.draw());
+//cards.forEach(card=> card.draw());
+
+balls.forEach((ball,index) => {
+
+    const limitArea = limit(ball, canvas );
+    const moveNeighbor = neighbor(ball, balls, limitArea);
+    
+//const moveTriangle = detectBallTriangleContact(ball, triangle,moveNeighbor);
+
+
+const moveRectArray=wood.map((wood)=>moveObjectRect(ball,wood,moveNeighbor))
+
+
+
+
+const moveRect = moveRectArray.reduce((acc, curr) => ({
+  left: acc.left && curr.left,
+  right: acc.right && curr.right,
+  top: acc.top && curr.top,
+  bottom: acc.bottom && curr.bottom,
+}), moveNeighbor);
+
+
+    const { left, right, bottom } = moveRect;
+
+
+
+
+
+    
+    if (bottom === true) {
+      ball.y += velocity;
+    }
+    if (left === true) {
+      ball.x -= velocity;
+    }
+    if (right === true ) {
+      ball.x += velocity;
+    }
+    
+
+
+
+
+    // Corrección final por seguridad
+    if (ball.x < 0) ball.x = 0;
+    if (ball.x + ball.w > canvas.width) ball.x = canvas.width - ball.w;
+    if (ball.y + ball.h > canvas.height) ball.y = canvas.height - ball.h;
+    
+
+        ball.draw()
+
+
+});
+
+//console.log("//////////////////////////////////////")
+requestAnimationFrame(animar);
+}
+
+    requestAnimationFrame(animar)
+
+const balls=[
+
+]
+
+for(let i=1;i<104;i++){
+    balls.push(getBall({x:400,y:-velocity*((100)+(ballHeight*i)),color:getRandomColor()}),
+)
+}
+const wood=[
+  getBall({x:0,y:500,color:"red",w:60}),
+  getBall({x:170,y:500,color:"red",w:550}),
+  getBall({x:850,y:500,color:"red",w:70}),
+]
+
+
+const triangle = getTriangle({ x: 300, y: 200, color: "orange",w:300,h:300 });
+
+let cardsY=0
+let cardsX=0
+let cardsTotal=noCards*noCards
+let cards=[];
+let wCards=canvas.width/noCards
+let hCards=canvas.width/noCards
+let cardsAdjustedHeight=500 /// aun no encuentro automatico la altura de las cartas
+
+console.log(cardsTotal)
+
+
+for(let i=0;i<cardsTotal;i++){
+
+    if(cardsX==noCards){
+        cardsX=0
+        cardsY++
+    }
+    console.log({x:cardsX,y:cardsY})
+    cards.push(
+        getBall({
+            x:cardsX*wCards,
+            y:cardsY*hCards+cardsAdjustedHeight,
+            color:getRandomColor(),
+            w:wCards,
+            h:hCards,
+            id:`${cardsX}-${cardsY}`
+        })
+    )
+    cardsX++
+
+}
+
+</script>
+</body>
+
+</html>

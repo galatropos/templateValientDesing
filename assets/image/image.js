@@ -1,5 +1,11 @@
 /*
 example:
-const $NailsBlue="/assets/image/NailsBlue.webp";
-const $NailsRed="/assets/image/NailsRed.webp";
+const $images={
+     NailsBlue="/assets/image/NailsBlue.webp";
+     NailsRed="/assets/image/NailsRed.webp";
+} y el púnto y coma
 */
+
+
+
+
